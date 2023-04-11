@@ -1,0 +1,19 @@
+#https://school.programmers.co.kr/learn/courses/30/lessons/150370
+def daytonumber(today):
+    result = int(today.split(".")[0])*12*28 + int(today.split(".")[1])*28 + int(today.split(".")[2])
+    return result
+
+def solution(today, terms, privacies):
+    terms_dict = {}
+    answer = []
+    today_number = daytonumber(today)
+    for i in range(len(terms)):
+        terms_dict[terms[i].split(" ")[0]] = terms[i].split(" ")[1]
+    for i in range(len(privacies)):      
+        day = daytonumber(str(privacies[i]).split(" ")[0])
+        term = int(terms_dict[privacies[i].split(" ")[1]])*28
+        limit = day+term-1
+        if int(today_number-limit) > 0:
+            print(i+1)
+            answer.append(int(i+1))
+    return answer
