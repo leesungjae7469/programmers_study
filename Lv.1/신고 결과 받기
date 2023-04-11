@@ -1,0 +1,42 @@
+def solution(id_list, report, kd):
+    id_list_dict = {}
+    for i in range(len(id_list)):
+        id_list_dict[id_list[i]] = i
+    test_list = [[0 for x in range(len(id_list))] for y in range(len(id_list))]
+    # print(id_list_dict)
+
+    for j in range(len(report)):
+        do = report[j].split(" ")[0]
+        receive = report[j].split(" ")[1]
+        if test_list[int(id_list_dict[do])][int(id_list_dict[receive])] == 0:
+            test_list[int(id_list_dict[do])][int(id_list_dict[receive])] += 1
+        else :
+            continue
+    # print(test_list)
+    
+    #신고의 합
+    sum_list = [0 for x in range(len(id_list))]
+    for k in range(len(sum_list)):
+        tmp_sum = 0
+        for l in range(len(sum_list)):
+            tmp_sum += test_list[l][k]
+        sum_list[k] = tmp_sum      
+    # print(sum_list)
+    
+    # k번 이상 받은사람
+    up_list = [0 for x in range(len(sum_list))]
+    for m in range(len(sum_list)):
+        if sum_list[m] >= kd:
+            up_list[m] += 1
+    # print(up_list)
+    
+    # 이제 받는 메일을 만들어보자
+    # print(test_list)
+    # print(up_list)
+    answer = [0 for x in range(len(test_list))]
+    for n in range(len(test_list)):
+        tmp_sum2 = 0
+        for o in range(len(up_list)):
+            tmp_sum2 += test_list[n][o]*up_list[o]
+        answer[n] = tmp_sum2
+    return answer
