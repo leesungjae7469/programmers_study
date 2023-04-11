@@ -1,3 +1,5 @@
+# Problem : https://school.programmers.co.kr/learn/courses/30/lessons/92334
+
 def solution(id_list, report, kd):
     id_list_dict = {}
     for i in range(len(id_list)):
