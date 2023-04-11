@@ -1,0 +1,19 @@
+def solution(quiz):
+    sol = []
+    for i in quiz:
+        n1 = int(i.split(' ')[0])
+        s1 = i.split(' ')[1]
+        n2 = int(i.split(' ')[2])
+        a1 = int(i.split(' ')[4])
+        print(s1)
+        if s1 == '+':
+            a2 = n1 + n2
+        elif s1 == '-':
+            a2 = n1 - n2
+        
+        if a1 == a2 :
+            sol.append("O")
+        else :
+            sol.append("X")
+    answer = sol
+    return answer
