@@ -1,0 +1,22 @@
+def solution(n):
+    o = n
+    list_3 = []
+    for i in range(n):
+        if o >= 3:
+            r = o%3
+            list_3.append(r)
+            o = o//3            
+        else:
+            list_3.append(o)
+            break
+    
+    list_10 = []
+    for j in range(len(list_3)):
+        m = len(list_3)
+        n = j+1
+        w = m-n
+        test = list_3[j]*(3**w)
+        list_10.append(test)
+        
+    answer = sum(list_10)
+    return answer
