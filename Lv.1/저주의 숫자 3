@@ -1,0 +1,16 @@
+def solution(n):
+    n_list = []
+    x3_list = []
+    for i in range(300):
+        n_list.append(i+1)
+    for j in n_list:
+        m = j%3
+        letter = str(j)
+        if m == 0:
+            continue
+        elif str(3) in letter:
+            continue
+        else:
+            x3_list.append(j)
+    answer = x3_list[n-1]
+    return answer
