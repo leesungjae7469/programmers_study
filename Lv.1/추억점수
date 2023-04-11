@@ -1,0 +1,15 @@
+def solution(name, yearning, photo):
+    dict_name = {}
+    for i in range(len(name)):
+        dict_name[name[i]]=yearning[i]
+    hi = []    
+    for pho in photo:
+        score = 0
+        for p in pho:
+            if p in dict_name.keys():
+                score = score + int(dict_name[p])
+            else:
+                continue
+        hi.append(score)
+    answer = hi
+    return answer
