@@ -1,0 +1,31 @@
+def solution(babbling):
+    possible = ['aya', 'ye', 'woo', 'ma']
+    impossible = ['ayaaya', 'yeye', 'woowoo', 'mama']
+    
+    answer = 0
+    babbling_new = []
+    for bab in babbling:
+        count = 0
+        for j in range(len(impossible)):
+            if impossible[j] in bab:
+                count += 1
+            else:
+                continue
+        if count == 0:
+            babbling_new.append(bab)
+    print('babbling_new', babbling_new)
+    for bab in babbling_new:           
+        for i in range(len(possible)):
+            if possible[i] in bab:
+                print(possible[i])
+                print(bab)
+                bab = bab.replace(possible[i]," ")
+                print(bab)
+            else:
+                continue
+        bab = bab.replace(" ", "")
+        if len(bab) == 0:
+            answer+=1
+        print(answer)
+        
+    return answer
