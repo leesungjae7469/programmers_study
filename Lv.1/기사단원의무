@@ -1,0 +1,18 @@
+def number_of_sp(number):
+    count = 0
+    for i in range(int(number**(1/2))):
+        if number%(i+1) == 0:
+            count += 2
+        if number/(i+1) == i+1:
+            count -= 1
+    return count
+
+def solution(number, limit, power):
+    number_of_list = [number_of_sp(sp+1) for sp in range(number)]
+    # print(number_of_list)
+    answer=0
+    for j in number_of_list:
+        if j > limit:
+            j = power
+        answer = answer + j
+    return answer
