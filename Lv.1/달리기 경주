@@ -1,0 +1,21 @@
+def solution(players, callings):
+    players_dic = {}
+    safe_dic = {}
+    i = 0
+    
+    for player in players:
+        i += 1
+        players_dic[player] = i
+        safe_dic[i] = player
+        
+    for call in callings:
+        current_player = call
+        previous_player = safe_dic[players_dic[current_player]-1]
+        
+        players_dic[current_player] -= 1
+        players_dic[previous_player] += 1
+
+        safe_dic[players_dic[current_player]] = current_player
+        safe_dic[players_dic[previous_player]] = previous_player
+        
+    return list(safe_dic.values())
