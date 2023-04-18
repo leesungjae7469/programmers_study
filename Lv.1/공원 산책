@@ -1,0 +1,40 @@
+def solution(park, routes):
+    for n in range(len(park)):
+        if "S" in park[n]:
+            i = int(n)
+            j = int(park[n].index('S'))
+        else :
+            continue
+    i_len = len(park)
+    j_len = len(park[0])
+    for route in routes:
+        direction = route.split(" ")[0]
+        distance = route.split(" ")[1]
+        if direction == "S" and (i+int(distance)) <= (i_len-1):
+            NS_list = [y[j] for y in [x for x in park]]
+            if 'X' in NS_list[i:i+int(distance)+1]:
+                continue
+            else:
+                i = i + int(distance)
+        elif direction == "N" and (i-int(distance)) >= 0:
+            NS_list = [y[j] for y in [x for x in park]]
+            if 'X' in NS_list[i-int(distance):i]:
+                continue
+            else:
+                i = i - int(distance)
+        elif direction == "E" and (j+int(distance)) <= (j_len-1):
+            EW_list = park[i]
+            if 'X' in EW_list[j:j+int(distance)+1]:
+                continue
+            else:
+                j = j + int(distance)
+        elif direction == "W" and (j-int(distance)) >= 0:
+            EW_list = park[i]
+            if 'X' in EW_list[j-int(distance):j]:
+                continue
+            else:
+                j = j - int(distance)
+        else:
+            continue
+    answer = [i,j]
+    return answer
