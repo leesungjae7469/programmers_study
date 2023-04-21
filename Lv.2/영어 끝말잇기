@@ -1,0 +1,25 @@
+def solution(n, words):
+    answer = [0,0]
+    words_list = []
+    
+    for k in range(len(words)):        
+        #단어길이
+        if len(words[k]) == 1:
+            answer = [(k%n)+1, (k//n)+1]
+            break
+        #반복 단어
+        elif words[k] in words_list:
+            answer = [(k%n)+1, (k//n)+1]         
+            break
+        
+        #틀린단어
+        elif (k != len(words)-1) and (words[k][-1] != words[k+1][0]):
+            print(words[k][-1])
+            print(words[k+1][0])
+            answer = [((k+1)%n)+1, ((k+1)//n)+1]
+            break
+        
+        words_list.append(words[k])
+
+        
+    return answer
